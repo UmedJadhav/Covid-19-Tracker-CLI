@@ -1,4 +1,4 @@
-# COVID 19 TRACKER CLI
+# Covid 19 Tracker CLI
 ## *Track covid 19 stats in terminal. Built using node.js*
 
 ### Data is being fetched from [here](https://corona.lmao.ninja/)
