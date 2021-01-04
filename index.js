@@ -7,7 +7,8 @@ const ora = require('ora');
 const Table = require('cli-table3');
 const fetchWorldwideStats = require('./lib/worldwide_data.js');
 const fetchAllCountry = require('./lib/all_countries_data.js');
-const fetchCountryData = require('./lib/country_data.js')
+const fetchCountryData = require('./lib/country_data.js');
+const fetchCountryChart = require('./lib/country_chart.js');
 const { style, single, colored, borderless } = require('./lib/table.js')
 const legend = require('./lib/legend');
 
@@ -39,5 +40,6 @@ unhandled();
     const lastUpdated = await fetchWorldwideStats(output);
     await fetchAllCountry(spinner, output, country, options);
     await fetchCountryData(spinner, output, country, options);
+    await fetchCountryChart(spinner, country, options);
     legend(lastUpdated);
 })();
