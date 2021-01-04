@@ -5,8 +5,9 @@ const unhandled = require('cli-handle-unhandled');
 const init = require('./lib/init.js');
 const ora = require('ora');
 const Table = require('cli-table3');
-const fetchWorldwide = require('./lib/worldwide_data.js');
-const fetchCountry = require('./lib/country_data.js');
+const fetchWorldwideStats = require('./lib/worldwide_data.js');
+const fetchAllCountry = require('./lib/all_countries_data.js');
+const fetchCountryData = require('./lib/country_data.js')
 const { style, single, colored, borderless } = require('./lib/table.js')
 const legend = require('./lib/legend');
 
@@ -35,7 +36,8 @@ unhandled();
     const output = new OutputFormat({ head, style, chars: border });
 
     spinner.start();
-    const lastUpdated = await fetchWorldwide(output);
-    await fetchCountry(spinner, output, country, options);
+    const lastUpdated = await fetchWorldwideStats(output);
+    await fetchAllCountry(spinner, output, country, options);
+    await fetchCountryData(spinner, output, country, options);
     legend(lastUpdated);
 })();
